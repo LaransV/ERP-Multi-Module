@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: nexerp-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nexerp
+    username: nexerp_user
+    password: NexErp@123
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  cache:
+    type: simple
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    mime-types: application/json,text/html
+
+jwt:
+  secret:             ${JWT_SECRET:nexerp-super-secret-jwt-key-min-256-bits-long-production-change-me!!!}
+  expiration-minutes: ${JWT_EXPIRY:480}
+
+cors:
+  allowed-origins: ${CORS_ORIGINS:http://localhost:3000}
+
+logging:
+  level:
+    com.nexerp: DEBUG
+    org.springframework.security: WARN
+    org.springframework.jdbc: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
+    file:    "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
+  file:
+    name: logs/nexerp.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+
+
+#   DB connet issue Fixing query
+#        CREATE LOGIN nexerp_user WITH PASSWORD = 'NexErp@123';
+#        ALTER LOGIN nexerp_user WITH CHECK_EXPIRATION = OFF;
+#
+#
+#
+#        USE NexERP;
+#        GO
+#
+#        CREATE USER nexerp_user FOR LOGIN nexerp_user;
+#        ALTER ROLE db_owner ADD MEMBER nexerp_user;
+#        GO

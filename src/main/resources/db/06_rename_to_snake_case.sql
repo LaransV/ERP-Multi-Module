@@ -1,0 +1,423 @@
+-- ============================================================
+-- Rename all tables/columns from PascalCase to snake_case
+-- Safe: uses RENAME (no data loss, no re-insert needed).
+-- PostgreSQL automatically updates dependent FKs, indexes,
+-- sequences, and constraints when you rename a table/column.
+-- Run this ONCE against your live 'nexerp' database.
+-- ============================================================
+
+-- ── 1. Rename columns (while tables still have old PascalCase names) ──
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "AttendanceId" TO attendance_id;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "EmpId" TO emp_id;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "AttendanceDate" TO attendance_date;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "CheckIn" TO check_in;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "CheckOut" TO check_out;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "DurationMinutes" TO duration_minutes;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "Status" TO status;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "Source" TO source;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "AttendanceLogs" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Clients" RENAME COLUMN "ClientId" TO client_id;
+ALTER TABLE "Clients" RENAME COLUMN "ClientName" TO client_name;
+ALTER TABLE "Clients" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Clients" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Clients" RENAME COLUMN "GstNumber" TO gst_number;
+ALTER TABLE "Clients" RENAME COLUMN "PanNumber" TO pan_number;
+ALTER TABLE "Clients" RENAME COLUMN "Address" TO address;
+ALTER TABLE "Clients" RENAME COLUMN "City" TO city;
+ALTER TABLE "Clients" RENAME COLUMN "State" TO state;
+ALTER TABLE "Clients" RENAME COLUMN "Pincode" TO pincode;
+ALTER TABLE "Clients" RENAME COLUMN "PaymentTerms" TO payment_terms;
+ALTER TABLE "Clients" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Clients" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Clients" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Clients" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Clients" RENAME COLUMN "CompanyId" TO company_id;
+ALTER TABLE "Clients" RENAME COLUMN "AliasName" TO alias_name;
+ALTER TABLE "Clients" RENAME COLUMN "VendorCode" TO vendor_code;
+ALTER TABLE "Clients" RENAME COLUMN "Website" TO website;
+ALTER TABLE "Clients" RENAME COLUMN "LandlinePhone" TO landline_phone;
+ALTER TABLE "Clients" RENAME COLUMN "GstnType" TO gstn_type;
+ALTER TABLE "Clients" RENAME COLUMN "AddressLine2" TO address_line2;
+ALTER TABLE "Clients" RENAME COLUMN "Country" TO country;
+ALTER TABLE "Clients" RENAME COLUMN "Currency" TO currency;
+ALTER TABLE "Clients" RENAME COLUMN "CreatedBy" TO created_by;
+ALTER TABLE "Clients" RENAME COLUMN "ModifiedBy" TO modified_by;
+
+ALTER TABLE "Companies" RENAME COLUMN "CompanyId" TO company_id;
+ALTER TABLE "Companies" RENAME COLUMN "CompanyName" TO company_name;
+ALTER TABLE "Companies" RENAME COLUMN "CompanyType" TO company_type;
+ALTER TABLE "Companies" RENAME COLUMN "ParentCompanyId" TO parent_company_id;
+ALTER TABLE "Companies" RENAME COLUMN "CorporateId" TO corporate_id;
+ALTER TABLE "Companies" RENAME COLUMN "Currency" TO currency;
+ALTER TABLE "Companies" RENAME COLUMN "Gstin" TO gstin;
+ALTER TABLE "Companies" RENAME COLUMN "Address" TO address;
+ALTER TABLE "Companies" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Companies" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Companies" RENAME COLUMN "LogoUrl" TO logo_url;
+ALTER TABLE "Companies" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Companies" RENAME COLUMN "CreatedAt" TO created_at;
+
+ALTER TABLE "CrmActivities" RENAME COLUMN "ActivityId" TO activity_id;
+ALTER TABLE "CrmActivities" RENAME COLUMN "LeadId" TO lead_id;
+ALTER TABLE "CrmActivities" RENAME COLUMN "ClientId" TO client_id;
+ALTER TABLE "CrmActivities" RENAME COLUMN "EntityName" TO entity_name;
+ALTER TABLE "CrmActivities" RENAME COLUMN "ActivityType" TO activity_type;
+ALTER TABLE "CrmActivities" RENAME COLUMN "Title" TO title;
+ALTER TABLE "CrmActivities" RENAME COLUMN "Description" TO description;
+ALTER TABLE "CrmActivities" RENAME COLUMN "ScheduledAt" TO scheduled_at;
+ALTER TABLE "CrmActivities" RENAME COLUMN "CompletedAt" TO completed_at;
+ALTER TABLE "CrmActivities" RENAME COLUMN "Status" TO status;
+ALTER TABLE "CrmActivities" RENAME COLUMN "CreatedBy" TO created_by;
+ALTER TABLE "CrmActivities" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "CrmActivities" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "CrmActivities" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Departments" RENAME COLUMN "DeptId" TO dept_id;
+ALTER TABLE "Departments" RENAME COLUMN "DeptName" TO dept_name;
+ALTER TABLE "Departments" RENAME COLUMN "HeadId" TO head_id;
+ALTER TABLE "Departments" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Departments" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Departments" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Departments" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Designations" RENAME COLUMN "DesigId" TO desig_id;
+ALTER TABLE "Designations" RENAME COLUMN "DesigName" TO desig_name;
+ALTER TABLE "Designations" RENAME COLUMN "Level" TO level;
+ALTER TABLE "Designations" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Designations" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Employees" RENAME COLUMN "EmpId" TO emp_id;
+ALTER TABLE "Employees" RENAME COLUMN "EmpCode" TO emp_code;
+ALTER TABLE "Employees" RENAME COLUMN "FirstName" TO first_name;
+ALTER TABLE "Employees" RENAME COLUMN "LastName" TO last_name;
+ALTER TABLE "Employees" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Employees" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Employees" RENAME COLUMN "DeptId" TO dept_id;
+ALTER TABLE "Employees" RENAME COLUMN "DesigId" TO desig_id;
+ALTER TABLE "Employees" RENAME COLUMN "DateOfJoining" TO date_of_joining;
+ALTER TABLE "Employees" RENAME COLUMN "DateOfBirth" TO date_of_birth;
+ALTER TABLE "Employees" RENAME COLUMN "Gender" TO gender;
+ALTER TABLE "Employees" RENAME COLUMN "EmploymentType" TO employment_type;
+ALTER TABLE "Employees" RENAME COLUMN "Status" TO status;
+ALTER TABLE "Employees" RENAME COLUMN "BasicSalary" TO basic_salary;
+ALTER TABLE "Employees" RENAME COLUMN "PfNumber" TO pf_number;
+ALTER TABLE "Employees" RENAME COLUMN "EsiNumber" TO esi_number;
+ALTER TABLE "Employees" RENAME COLUMN "PanNumber" TO pan_number;
+ALTER TABLE "Employees" RENAME COLUMN "ReportingManagerId" TO reporting_manager_id;
+ALTER TABLE "Employees" RENAME COLUMN "Address" TO address;
+ALTER TABLE "Employees" RENAME COLUMN "City" TO city;
+ALTER TABLE "Employees" RENAME COLUMN "State" TO state;
+ALTER TABLE "Employees" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Employees" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Employees" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Employees" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Followups" RENAME COLUMN "FollowupId" TO followup_id;
+ALTER TABLE "Followups" RENAME COLUMN "LeadId" TO lead_id;
+ALTER TABLE "Followups" RENAME COLUMN "ScheduledAt" TO scheduled_at;
+ALTER TABLE "Followups" RENAME COLUMN "CompletedAt" TO completed_at;
+ALTER TABLE "Followups" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "Followups" RENAME COLUMN "FollowupType" TO followup_type;
+ALTER TABLE "Followups" RENAME COLUMN "Status" TO status;
+ALTER TABLE "Followups" RENAME COLUMN "CreatedBy" TO created_by;
+ALTER TABLE "Followups" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Followups" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Followups" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "InvoiceItems" RENAME COLUMN "ItemId" TO item_id;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "InvoiceId" TO invoice_id;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "ProductId" TO product_id;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "ProductName" TO product_name;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "HsnCode" TO hsn_code;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "Quantity" TO quantity;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "Unit" TO unit;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "UnitPrice" TO unit_price;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "DiscountPct" TO discount_pct;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "DiscountAmount" TO discount_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "TaxableAmount" TO taxable_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "CgstRate" TO cgst_rate;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "CgstAmount" TO cgst_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "SgstRate" TO sgst_rate;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "SgstAmount" TO sgst_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "IgstRate" TO igst_rate;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "IgstAmount" TO igst_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "TotalAmount" TO total_amount;
+ALTER TABLE "InvoiceItems" RENAME COLUMN "SortOrder" TO sort_order;
+
+ALTER TABLE "Invoices" RENAME COLUMN "InvoiceId" TO invoice_id;
+ALTER TABLE "Invoices" RENAME COLUMN "InvoiceNumber" TO invoice_number;
+ALTER TABLE "Invoices" RENAME COLUMN "ClientId" TO client_id;
+ALTER TABLE "Invoices" RENAME COLUMN "InvoiceDate" TO invoice_date;
+ALTER TABLE "Invoices" RENAME COLUMN "DueDate" TO due_date;
+ALTER TABLE "Invoices" RENAME COLUMN "Status" TO status;
+ALTER TABLE "Invoices" RENAME COLUMN "PaymentStatus" TO payment_status;
+ALTER TABLE "Invoices" RENAME COLUMN "Subtotal" TO subtotal;
+ALTER TABLE "Invoices" RENAME COLUMN "DiscountAmount" TO discount_amount;
+ALTER TABLE "Invoices" RENAME COLUMN "TaxableAmount" TO taxable_amount;
+ALTER TABLE "Invoices" RENAME COLUMN "CgstTotal" TO cgst_total;
+ALTER TABLE "Invoices" RENAME COLUMN "SgstTotal" TO sgst_total;
+ALTER TABLE "Invoices" RENAME COLUMN "IgstTotal" TO igst_total;
+ALTER TABLE "Invoices" RENAME COLUMN "TaxTotal" TO tax_total;
+ALTER TABLE "Invoices" RENAME COLUMN "TdsPct" TO tds_pct;
+ALTER TABLE "Invoices" RENAME COLUMN "TdsAmount" TO tds_amount;
+ALTER TABLE "Invoices" RENAME COLUMN "RoundOff" TO round_off;
+ALTER TABLE "Invoices" RENAME COLUMN "GrandTotal" TO grand_total;
+ALTER TABLE "Invoices" RENAME COLUMN "PaidAmount" TO paid_amount;
+ALTER TABLE "Invoices" RENAME COLUMN "BalanceAmount" TO balance_amount;
+ALTER TABLE "Invoices" RENAME COLUMN "IsInterstate" TO is_interstate;
+ALTER TABLE "Invoices" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "Invoices" RENAME COLUMN "Terms" TO terms;
+ALTER TABLE "Invoices" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Invoices" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Invoices" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Invoices" RENAME COLUMN "CompanyId" TO company_id;
+ALTER TABLE "Invoices" RENAME COLUMN "SupplierRefNo" TO supplier_ref_no;
+ALTER TABLE "Invoices" RENAME COLUMN "EWayBillNo" TO e_way_bill_no;
+ALTER TABLE "Invoices" RENAME COLUMN "GenerateEWayBill" TO generate_e_way_bill;
+ALTER TABLE "Invoices" RENAME COLUMN "DcNo" TO dc_no;
+ALTER TABLE "Invoices" RENAME COLUMN "DcDate" TO dc_date;
+ALTER TABLE "Invoices" RENAME COLUMN "SelectDc" TO select_dc;
+ALTER TABLE "Invoices" RENAME COLUMN "VehicleNo" TO vehicle_no;
+ALTER TABLE "Invoices" RENAME COLUMN "LrNo" TO lr_no;
+ALTER TABLE "Invoices" RENAME COLUMN "Distance" TO distance;
+ALTER TABLE "Invoices" RENAME COLUMN "TransporterId" TO transporter_id;
+ALTER TABLE "Invoices" RENAME COLUMN "DelThrough" TO del_through;
+ALTER TABLE "Invoices" RENAME COLUMN "DelDestn" TO del_destn;
+ALTER TABLE "Invoices" RENAME COLUMN "OrderNo" TO order_no;
+ALTER TABLE "Invoices" RENAME COLUMN "OrderDate" TO order_date;
+ALTER TABLE "Invoices" RENAME COLUMN "SoNo" TO so_no;
+ALTER TABLE "Invoices" RENAME COLUMN "Currency" TO currency;
+ALTER TABLE "Invoices" RENAME COLUMN "DispatchAddressId" TO dispatch_address_id;
+ALTER TABLE "Invoices" RENAME COLUMN "ShipToAddressId" TO ship_to_address_id;
+
+ALTER TABLE "InvoiceSequence" RENAME COLUMN "SeqYear" TO seq_year;
+ALTER TABLE "InvoiceSequence" RENAME COLUMN "NextNum" TO next_num;
+
+ALTER TABLE "Leads" RENAME COLUMN "LeadId" TO lead_id;
+ALTER TABLE "Leads" RENAME COLUMN "LeadName" TO lead_name;
+ALTER TABLE "Leads" RENAME COLUMN "Company" TO company;
+ALTER TABLE "Leads" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Leads" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Leads" RENAME COLUMN "Source" TO source;
+ALTER TABLE "Leads" RENAME COLUMN "Status" TO status;
+ALTER TABLE "Leads" RENAME COLUMN "Priority" TO priority;
+ALTER TABLE "Leads" RENAME COLUMN "AssignedToId" TO assigned_to_id;
+ALTER TABLE "Leads" RENAME COLUMN "ExpectedValue" TO expected_value;
+ALTER TABLE "Leads" RENAME COLUMN "ExpectedCloseDate" TO expected_close_date;
+ALTER TABLE "Leads" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "Leads" RENAME COLUMN "RejectedReason" TO rejected_reason;
+ALTER TABLE "Leads" RENAME COLUMN "NextFollowupDate" TO next_followup_date;
+ALTER TABLE "Leads" RENAME COLUMN "LastActivityAt" TO last_activity_at;
+ALTER TABLE "Leads" RENAME COLUMN "ConvertedToClientId" TO converted_to_client_id;
+ALTER TABLE "Leads" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Leads" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Leads" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Leads" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Modules" RENAME COLUMN "ModuleId" TO module_id;
+ALTER TABLE "Modules" RENAME COLUMN "ModuleCode" TO module_code;
+ALTER TABLE "Modules" RENAME COLUMN "ModuleName" TO module_name;
+ALTER TABLE "Modules" RENAME COLUMN "Icon" TO icon;
+ALTER TABLE "Modules" RENAME COLUMN "SortOrder" TO sort_order;
+ALTER TABLE "Modules" RENAME COLUMN "IsActive" TO is_active;
+
+ALTER TABLE "PayrollRuns" RENAME COLUMN "PayrollId" TO payroll_id;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "EmpId" TO emp_id;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "Month" TO month;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "Year" TO year;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "DaysWorked" TO days_worked;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "LopDays" TO lop_days;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "GrossSalary" TO gross_salary;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "TotalDeductions" TO total_deductions;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "NetSalary" TO net_salary;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "PfEmployee" TO pf_employee;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "PfEmployer" TO pf_employer;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "EsiEmployee" TO esi_employee;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "EsiEmployer" TO esi_employer;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "TdsAmount" TO tds_amount;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "ProfessionalTax" TO professional_tax;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "Status" TO status;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "ProcessedAt" TO processed_at;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "PaidAt" TO paid_at;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "PayrollRuns" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "PoSequence" RENAME COLUMN "SeqYear" TO seq_year;
+ALTER TABLE "PoSequence" RENAME COLUMN "NextNum" TO next_num;
+
+ALTER TABLE "Products" RENAME COLUMN "ProductId" TO product_id;
+ALTER TABLE "Products" RENAME COLUMN "ProductName" TO product_name;
+ALTER TABLE "Products" RENAME COLUMN "ProductCode" TO product_code;
+ALTER TABLE "Products" RENAME COLUMN "HsnCode" TO hsn_code;
+ALTER TABLE "Products" RENAME COLUMN "ProductType" TO product_type;
+ALTER TABLE "Products" RENAME COLUMN "Unit" TO unit;
+ALTER TABLE "Products" RENAME COLUMN "TaxRate" TO tax_rate;
+ALTER TABLE "Products" RENAME COLUMN "PurchasePrice" TO purchase_price;
+ALTER TABLE "Products" RENAME COLUMN "SalePrice" TO sale_price;
+ALTER TABLE "Products" RENAME COLUMN "CategoryName" TO category_name;
+ALTER TABLE "Products" RENAME COLUMN "GroupName" TO group_name;
+ALTER TABLE "Products" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Products" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Products" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Products" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "Products" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "PoItemId" TO po_item_id;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "PoId" TO po_id;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "ProductId" TO product_id;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "ProductName" TO product_name;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "Quantity" TO quantity;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "UnitPrice" TO unit_price;
+ALTER TABLE "PurchaseOrderItems" RENAME COLUMN "TotalAmount" TO total_amount;
+
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "PoId" TO po_id;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "PoNumber" TO po_number;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "VendorId" TO vendor_id;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "PoDate" TO po_date;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "ExpectedDate" TO expected_date;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "Status" TO status;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "TotalAmount" TO total_amount;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "IsDeleted" TO is_deleted;
+ALTER TABLE "PurchaseOrders" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "EntitlementId" TO entitlement_id;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "RoleId" TO role_id;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "ScreenId" TO screen_id;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "CanCreate" TO can_create;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "CanRead" TO can_read;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "CanUpdate" TO can_update;
+ALTER TABLE "RoleEntitlements" RENAME COLUMN "CanDelete" TO can_delete;
+
+ALTER TABLE "Roles" RENAME COLUMN "RoleId" TO role_id;
+ALTER TABLE "Roles" RENAME COLUMN "RoleName" TO role_name;
+ALTER TABLE "Roles" RENAME COLUMN "RoleDescription" TO role_description;
+ALTER TABLE "Roles" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Roles" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Roles" RENAME COLUMN "UpdatedAt" TO updated_at;
+
+ALTER TABLE "Screens" RENAME COLUMN "ScreenId" TO screen_id;
+ALTER TABLE "Screens" RENAME COLUMN "ScreenCode" TO screen_code;
+ALTER TABLE "Screens" RENAME COLUMN "ScreenName" TO screen_name;
+ALTER TABLE "Screens" RENAME COLUMN "ModuleId" TO module_id;
+ALTER TABLE "Screens" RENAME COLUMN "Route" TO route;
+ALTER TABLE "Screens" RENAME COLUMN "SortOrder" TO sort_order;
+
+ALTER TABLE "StockLevels" RENAME COLUMN "StockId" TO stock_id;
+ALTER TABLE "StockLevels" RENAME COLUMN "ProductId" TO product_id;
+ALTER TABLE "StockLevels" RENAME COLUMN "WarehouseName" TO warehouse_name;
+ALTER TABLE "StockLevels" RENAME COLUMN "OpeningStock" TO opening_stock;
+ALTER TABLE "StockLevels" RENAME COLUMN "CurrentStock" TO current_stock;
+ALTER TABLE "StockLevels" RENAME COLUMN "ReservedStock" TO reserved_stock;
+ALTER TABLE "StockLevels" RENAME COLUMN "ReorderLevel" TO reorder_level;
+ALTER TABLE "StockLevels" RENAME COLUMN "LastUpdated" TO last_updated;
+ALTER TABLE "StockLevels" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "StockMovements" RENAME COLUMN "MovementId" TO movement_id;
+ALTER TABLE "StockMovements" RENAME COLUMN "ProductId" TO product_id;
+ALTER TABLE "StockMovements" RENAME COLUMN "MovementType" TO movement_type;
+ALTER TABLE "StockMovements" RENAME COLUMN "Quantity" TO quantity;
+ALTER TABLE "StockMovements" RENAME COLUMN "ReferenceType" TO reference_type;
+ALTER TABLE "StockMovements" RENAME COLUMN "ReferenceNumber" TO reference_number;
+ALTER TABLE "StockMovements" RENAME COLUMN "WarehouseFrom" TO warehouse_from;
+ALTER TABLE "StockMovements" RENAME COLUMN "WarehouseTo" TO warehouse_to;
+ALTER TABLE "StockMovements" RENAME COLUMN "Notes" TO notes;
+ALTER TABLE "StockMovements" RENAME COLUMN "CreatedBy" TO created_by;
+ALTER TABLE "StockMovements" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "StockMovements" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "UserEntitlements" RENAME COLUMN "UserEntitlementId" TO user_entitlement_id;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "UserId" TO user_id;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "ScreenId" TO screen_id;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "CanCreate" TO can_create;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "CanRead" TO can_read;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "CanUpdate" TO can_update;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "CanDelete" TO can_delete;
+ALTER TABLE "UserEntitlements" RENAME COLUMN "CreatedAt" TO created_at;
+
+ALTER TABLE "Users" RENAME COLUMN "UserId" TO user_id;
+ALTER TABLE "Users" RENAME COLUMN "Username" TO username;
+ALTER TABLE "Users" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Users" RENAME COLUMN "FullName" TO full_name;
+ALTER TABLE "Users" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Users" RENAME COLUMN "PasswordHash" TO password_hash;
+ALTER TABLE "Users" RENAME COLUMN "RoleId" TO role_id;
+ALTER TABLE "Users" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Users" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Users" RENAME COLUMN "UpdatedAt" TO updated_at;
+ALTER TABLE "Users" RENAME COLUMN "LastLogin" TO last_login;
+ALTER TABLE "Users" RENAME COLUMN "CorporateId" TO corporate_id;
+ALTER TABLE "Users" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "Vendors" RENAME COLUMN "VendorId" TO vendor_id;
+ALTER TABLE "Vendors" RENAME COLUMN "VendorName" TO vendor_name;
+ALTER TABLE "Vendors" RENAME COLUMN "Email" TO email;
+ALTER TABLE "Vendors" RENAME COLUMN "Phone" TO phone;
+ALTER TABLE "Vendors" RENAME COLUMN "GstNumber" TO gst_number;
+ALTER TABLE "Vendors" RENAME COLUMN "Address" TO address;
+ALTER TABLE "Vendors" RENAME COLUMN "City" TO city;
+ALTER TABLE "Vendors" RENAME COLUMN "State" TO state;
+ALTER TABLE "Vendors" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "Vendors" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "Vendors" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "DispatchAddressId" TO dispatch_address_id;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "Name" TO name;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "AddressLine1" TO address_line1;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "AddressLine2" TO address_line2;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "DispatchState" TO dispatch_state;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "Pincode" TO pincode;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "DispatchAddresses" RENAME COLUMN "CompanyId" TO company_id;
+
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "ShipToAddressId" TO ship_to_address_id;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "Name" TO name;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "AddressLine1" TO address_line1;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "AddressLine2" TO address_line2;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "ShippingState" TO shipping_state;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "Pincode" TO pincode;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "Gstin" TO gstin;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "IsActive" TO is_active;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "CreatedAt" TO created_at;
+ALTER TABLE "ShipToAddresses" RENAME COLUMN "CompanyId" TO company_id;
+
+-- ── 2. Rename tables ──
+ALTER TABLE "AttendanceLogs" RENAME TO attendance_logs;
+ALTER TABLE "Clients" RENAME TO clients;
+ALTER TABLE "Companies" RENAME TO companies;
+ALTER TABLE "CrmActivities" RENAME TO crm_activities;
+ALTER TABLE "Departments" RENAME TO departments;
+ALTER TABLE "Designations" RENAME TO designations;
+ALTER TABLE "Employees" RENAME TO employees;
+ALTER TABLE "Followups" RENAME TO followups;
+ALTER TABLE "InvoiceItems" RENAME TO invoice_items;
+ALTER TABLE "Invoices" RENAME TO invoices;
+ALTER TABLE "InvoiceSequence" RENAME TO invoice_sequence;
+ALTER TABLE "Leads" RENAME TO leads;
+ALTER TABLE "Modules" RENAME TO modules;
+ALTER TABLE "PayrollRuns" RENAME TO payroll_runs;
+ALTER TABLE "PoSequence" RENAME TO po_sequence;
+ALTER TABLE "Products" RENAME TO products;
+ALTER TABLE "PurchaseOrderItems" RENAME TO purchase_order_items;
+ALTER TABLE "PurchaseOrders" RENAME TO purchase_orders;
+ALTER TABLE "RoleEntitlements" RENAME TO role_entitlements;
+ALTER TABLE "Roles" RENAME TO roles;
+ALTER TABLE "Screens" RENAME TO screens;
+ALTER TABLE "StockLevels" RENAME TO stock_levels;
+ALTER TABLE "StockMovements" RENAME TO stock_movements;
+ALTER TABLE "UserEntitlements" RENAME TO user_entitlements;
+ALTER TABLE "Users" RENAME TO users;
+ALTER TABLE "Vendors" RENAME TO vendors;
+ALTER TABLE "DispatchAddresses" RENAME TO dispatch_addresses;
+ALTER TABLE "ShipToAddresses" RENAME TO ship_to_addresses;
+
+-- ── 3. Re-grant privileges (rename doesn't affect existing grants,
+--    but running this is harmless and covers any new sequences) ──
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO nexerp_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO nexerp_user;
