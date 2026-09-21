@@ -2,9 +2,9 @@ spring:
   application:
     name: nexerp-backend
   datasource:
-    url: jdbc:postgresql://localhost:5432/nexerp
-    username: nexerp_user
-    password: NexErp@123
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:nexerp}
+    username: ${DB_USER:nexerp_user}
+    password: ${DB_PASSWORD:NexErp@123}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10
